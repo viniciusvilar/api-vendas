@@ -16,6 +16,6 @@ export class DeleteCustomerService {
             throw new AppError("User not found.")
         }
 
-        await customerRepository.delete(customer)
+        await customerRepository.remove(customer)
     }
 }
