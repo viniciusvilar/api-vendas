@@ -4,6 +4,7 @@ import { CreateUserService } from "../services/CreateUserService";
 import { ListUserService } from "../services/ListUsersService";
 import { ShowProfileService } from "../services/ShowProfileService";
 import { UpdateProfileService } from "../services/UpdateProfileService";
+import { instanceToInstance } from 'class-transformer'
 
 export class ProfileController {
 
@@ -13,7 +14,7 @@ export class ProfileController {
 
         const user = await showProfile.execute({ user_id })
 
-        return response.json(user);
+        return response.json(instanceToInstance(user));
     }
 
     public async update(request: Request, response: Response): Promise<Response> {
@@ -30,7 +31,7 @@ export class ProfileController {
             old_password
         })
 
-        return response.json(user)
+        return response.json(instanceToInstance(user))
     }
 
 }
